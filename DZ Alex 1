@@ -1,0 +1,35 @@
+import UIKit
+
+var mas: [Int] = []
+
+while mas.count < 100 {
+    mas.append(Int(arc4random() % 100))
+}
+
+var masEven: [Int] = []
+var masUneven: [Int] = []
+
+for i in mas {
+    i % 2 == 0 ? masEven.append(i) : masUneven.append(i)
+}
+
+masEven
+masUneven
+masEven + masUneven
+
+func minMax(mas: [Int]) -> (Int?, Int?) {
+    if mas.count > 0 {
+        var min = mas.first!
+        var max = mas.first!
+        
+        for i in mas {
+            i > max ? max = i : ()
+            i < min ? min = i : ()
+        }
+        return (min, max)
+    }
+        return (nil, nil)
+}
+
+minMax(mas: masEven)
+minMax(mas: masUneven)
