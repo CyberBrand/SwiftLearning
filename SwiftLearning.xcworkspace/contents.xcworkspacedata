@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:01 Simple Types.playground">
+   </FileRef>
+   <FileRef
+      location = "group:02 Structured Types.playground">
+   </FileRef>
+   <FileRef
+      location = "group:03 Operators.playground">
+   </FileRef>
+   <FileRef
+      location = "group:04 Statements.playground">
+   </FileRef>
+   <FileRef
+      location = "group:05 Functions.playground">
+   </FileRef>
+   <FileRef
+      location = "group:06 Closures.playground">
+   </FileRef>
+   <FileRef
+      location = "group:Image View and Network.playground">
+   </FileRef>
+   <FileRef
+      location = "group:Image View and Network.png">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+</Workspace>
