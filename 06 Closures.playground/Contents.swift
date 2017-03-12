@@ -90,8 +90,7 @@ print(f4(d4, 5, condition: c4))
 //////////////////////////////////////////////////////
 print("\n=== 5 ==================")
 
-// and where generics?
-// here!
+// and where is generics?
 // we can refactor our function to use any type:
 let c5: (Int, Int) -> Bool = { value, minimum in
     return value > minimum
