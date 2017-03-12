@@ -32,7 +32,7 @@ print(v2_1)
 print(v2_2)
 
 // moreover, our functions have *exactly* the same declarations, like "+" or "/" operators
-// magic is here: 😱
+// the magic is here: 😱
 print(f2(10, 2, operation: +))
 print(f2(10, 2, operation: /))
 
@@ -48,7 +48,8 @@ let c3: (Int) -> Bool = { value in
 print(c3(100))
 print(c3(2))
 
-// we can provide closures as an function argument:
+// we can provide closures as an function argument
+// function filters an array by using result of the closure
 func f3(_ source: [Int], condition: (Int) -> Bool) -> [Int] {
     var result: [Int] = []
     for element in source {
@@ -70,7 +71,7 @@ let c4: (Int, Int) -> Bool = { value, minimum in
     return value > minimum
 }
 
-// look good 😎
+// looks good 😎
 print(c4(100, 5))
 print(c4(2, 5))
 
@@ -90,7 +91,7 @@ print(f4(d4, 5, condition: c4))
 //////////////////////////////////////////////////////
 print("\n=== 5 ==================")
 
-// and where is generics?
+// so, where is generics?
 // we can refactor our function to use any type:
 let c5: (Int, Int) -> Bool = { value, minimum in
     return value > minimum

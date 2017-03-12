@@ -51,7 +51,7 @@ func f4(range: Range<Int>) -> Int {
     return f3(lowerBound: range.lowerBound, upperBound: range.upperBound - 1)
 }
 
-// to be discommented while in demo
+// statements will be discommented while in demo
 //func f4(range: ClosedRange<Int>) -> Int {
 //    return f3(lowerBound: range.lowerBound, upperBound: range.upperBound)
 //}
@@ -87,6 +87,7 @@ func f6(source: [Int]) -> (min: Int, max: Int) {
 }
 
 print(f6(source: [6, 4, 9, 2]))
+// remove statement comment while in demo
 //print(f6(source: []))
 
 //////////////////////////////////////////////////////
