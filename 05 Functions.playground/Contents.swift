@@ -1,16 +1,19 @@
 import Foundation
 
 //////////////////////////////////////////////////////
+// just a function
 print("=== 1 ==================")
 func f1() {
     print("f1")
 }
 
+// call to it
 f1()
 
 //////////////////////////////////////////////////////
 print("\n=== 2 ==================")
 
+// a function with result
 func f2() -> Int {
     return Int(arc4random() % 10)
 }
@@ -20,6 +23,7 @@ print("f2 = \(v2)")
 //////////////////////////////////////////////////////
 print("\n=== 3 ==================")
 
+// a function with parameters
 func f3(lowerBound: Int, upperBound: Int) -> Int {
     if lowerBound < upperBound {
         print("Rolling random between \(lowerBound) and \(upperBound)")
@@ -28,15 +32,26 @@ func f3(lowerBound: Int, upperBound: Int) -> Int {
     return lowerBound
 }
 
+// just like obj-c style we should retype parameter name:
 let v3 = f3(lowerBound: 1, upperBound: 10)
+
+// however, we can exempt caller to indicate parameter names (by using _)
+// so, we have public and private argument names, it's very cool
+// when you consider do not use a public parameter name, just use "_" placeholder
+func f3_1(_ lowerBound: Int, _ upperBound: Int) -> Int {
+    return f3(lowerBound: lowerBound, upperBound: upperBound)
+}
+let v3_1 = f3_1(1, 10)
 
 //////////////////////////////////////////////////////
 print("\n=== 4 ==================")
 
+// nice using range (once again)
 func f4(range: Range<Int>) -> Int {
     return f3(lowerBound: range.lowerBound, upperBound: range.upperBound - 1)
 }
 
+// to be discommented while in demo
 //func f4(range: ClosedRange<Int>) -> Int {
 //    return f3(lowerBound: range.lowerBound, upperBound: range.upperBound)
 //}
@@ -47,6 +62,7 @@ let v4 = f4(range: 0..<5)
 //////////////////////////////////////////////////////
 print("\n=== 5 ==================")
 
+// function can return complex result(s) also
 func f5(source: String) -> [Character: Int] {
     var result: [Character: Int] = [:]
     for char in source.characters {
@@ -60,6 +76,7 @@ print(f5(source: "abcabcbcb"))
 //////////////////////////////////////////////////////
 print("\n=== 6 ==================")
 
+// tuples are possible results also too
 func f6(source: [Int]) -> (min: Int, max: Int) {
     var result: (min: Int, max: Int) = (Int.max, Int.min)
     for element in source {
@@ -75,6 +92,7 @@ print(f6(source: [6, 4, 9, 2]))
 //////////////////////////////////////////////////////
 print("\n=== 7 ==================")
 
+// functions can modify input values (& sign is required for call)
 func f7int(v1: inout Int, v2: inout Int) {
     let temp = v1
     v1 = v2
@@ -101,6 +119,7 @@ print("after: \(v7_s1), \(v7_s2)")
 
 print("---------------")
 
+// we have two functions to produce the same logic, let's create generic
 func f7<T>(v1: inout T, v2: inout T) {
     let temp = v1
     v1 = v2
@@ -118,11 +137,14 @@ v7_s2 = "cd"
 print("before: \(v7_s1), \(v7_s2)")
 f7(v1: &v7_s1, v2: &v7_s2)
 print("after: \(v7_s1), \(v7_s2)")
-
+// as we can see - it works! 😎
 
 //////////////////////////////////////////////////////
 print("\n=== 8 ==================")
 
+// what about more complex generics? 
+// suppose we have some "stack" struct
+// pay attention to "mutating" keyword
 struct IntStack {
     var items: [Int] = []
     mutating func push(value: Int) { items.append(value) }
@@ -145,6 +167,8 @@ print(s8_int.items)
 print(s8_int.pop())
 print(s8_int.items)
 
+// it works, but what about other types than Int?
+// generics is the answer:
 struct Stack<T> {
     var items: [T] = []
     mutating func push(value: T) { items.append(value) }
