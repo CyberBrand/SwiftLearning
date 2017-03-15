@@ -25,7 +25,8 @@ func f2(_ v1: Int, _ v2: Int, operation: (Int, Int) -> Int) -> Int {
 }
 
 // omg, we can use our previous functions!
-let v2_1 = f2(10, 2, operation: f1_add)
+let vvvv = f1_add
+let v2_1 = f2(10, 2, operation: vvvv)
 let v2_2 = f2(10, 2, operation: f1_mul)
 
 print(v2_1)
@@ -33,20 +34,26 @@ print(v2_2)
 
 // moreover, our functions have *exactly* the same declarations, like "+" or "/" operators
 // the magic is here: 😱
-print(f2(10, 2, operation: +))
-print(f2(10, 2, operation: /))
+print(f2(10, 2, operation: + ))
+print(f2(10, 2, operation: * ))
 
 //////////////////////////////////////////////////////
 print("\n=== 3 ==================")
 
 // we can assign closures to a variables!
-let c3: (Int) -> Bool = { value in
-    return value > 5
+var c3: (Int) -> Bool
+c3 = { (vvv: Int) -> Bool in
+    return vvv > 5
+}
+
+var c333: (Int) -> Bool
+c333 = { vvv in
+    return vvv > 5
 }
 
 // wow!
 print(c3(100))
-print(c3(2))
+print(c333(2))
 
 // we can provide closures as an function argument
 // function filters an array by using result of the closure
@@ -76,17 +83,17 @@ print(c4(100, 5))
 print(c4(2, 5))
 
 // now, we have to rewrite our func to use new parameter (argument for closure)
-func f4(_ source: [Int], _ minimum: Int, condition: (Int, Int) -> Bool) -> [Int] {
+func f4(_ source: [Int], _ value: Int, condition: (Int, Int) -> Bool) -> [Int] {
     var result: [Int] = []
     for element in source {
-        if condition(element, minimum) { result.append(element) }
+        if condition(element, value) { result.append(element) }
     }
     return result
 }
 
 // wow-wow! it works! 🤗
 let d4 = [2, 60, 10, 3, 8, 1]
-print(f4(d4, 5, condition: c4))
+print(f4(d4, 9, condition: c4))
 
 //////////////////////////////////////////////////////
 print("\n=== 5 ==================")
@@ -108,4 +115,19 @@ func f5<T>(_ source: [T], _ minimum: T, condition: (T, T) -> Bool) -> [T] {
 // incredibly! it works too! 😇
 let d5 = [2, 60, 10, 3, 8, 1]
 print(f5(d5, 5, condition: c5))
+
+let c55: (String, String) -> Bool = { value, minimum in
+    return value > minimum
+}
+
+let d55 = ["ab", "cd", "ef"]
+print(f5(d55, "bb", condition: c55))
+
+
+let w = [1, 4, 5, 6, 7, 8]
+let wr = w.sorted(by: > )
+wr
+
+
+
 

@@ -8,8 +8,9 @@ print("\n=== 1 ==================")
 // Statements
 // Block
 
-do {
-    print(1)
+do { // special
+    let a = 1
+    print(a)
     print(2)
 }
 
@@ -40,18 +41,44 @@ print(v0)
 //////////////////////////////////////////////////////
 print("=== 4 ==================")
 
+enum Op<T> {
+    case Nil
+    case Value(v: T)
+}
+
+//var aaa: Int
+//print(aaa)
+
 // Optionals
-let v1: Int? = 2
+var v1: Int? // = nil
 print(v1)
+v1 = 2
+v1 = v1! * 2
+print(v1!)
+
+var v111 = v1
+type(of: v111)
 
 // force unwrap
 let v2 = v1! + 3
 print(v2)
 
 // Nil Coalescing
-let v3: Int? = nil
+let v3: Int? = 2
 let v4 = v3 ?? 6
 print(v4)
+
+class CCC1 {
+    var a: Int = 0
+}
+class CCC2 {
+    var c: CCC1?
+}
+
+var ccc: CCC2? = CCC2()
+ccc?.c = CCC1()
+ccc?.c?.a = 123
+print(ccc?.c?.a)
 
 //////////////////////////////////////////////////////
 print("\n=== 5.1 ==================")
@@ -59,6 +86,10 @@ print("\n=== 5.1 ==================")
 // For
 var v5: String = ""
 for i in 0..<10 {
+    v5.append(String(i))
+}
+print(v5)
+for i in [4,7,8] {
     v5.append(String(i))
 }
 print(v5)
@@ -71,6 +102,16 @@ for v7 in a1 {
 }
 print(s1)
 
+let dd1 = ["key1": 123, "key2": 234, "key3": 345]
+for q in dd1 {
+    print(q.key)
+    print(q.value)
+}
+for (k, v) in dd1 {
+    print(k)
+    print(v)
+}
+
 print("--------------")
 for i in 0..<10 {
     if (4..<7).contains(i) {
@@ -80,7 +121,7 @@ for i in 0..<10 {
 }
 
 print("--------------")
-for i in 1..<1000 {
+for i in 9..<1000 {
     if (i % 7) == 0 {
         break
     }
@@ -131,7 +172,7 @@ case .Google: print("Google")
 case .Microsoft: print("Microsoft")
 }
 
-var v11 = 3
+var v11 = 31
 
 switch v10 {
 case .Apple: print("Apple")
@@ -144,23 +185,37 @@ case .Microsoft: print("Microsoft")
 print("\n=== 6.2 ==================")
 // Switch
 
-let v12 = "yes"
-switch v12 {
+let v12 = "Yes"
+switch v12.lowercased() {
     case "no": print("the answer is no")
     case "yes": print("the answer is yes")
     default: print("the answer is maybe")
 }
 
-let v13 = 60
+let v13 = 120
 switch v13 {
 case 0..<100:
     print("the value between 0 and 100");
-    //fallthrough
+    fallthrough
 case 50..<150:
     print("the value between 50 and 150");
-    //fallthrough
+    fallthrough
 case 20:
-    print("the value between 100 and 1000")
-default: break
+    print("the value is 20")
+    fallthrough
+default: print("default")
 }
 
+let v14 = 10
+var v15 = "a"
+
+switch (v14, v15) {
+case (10, _): print(111)
+case (10, "b"):
+    print(1)
+default:
+    print(0)
+}
+
+//var qqq = 5
+//if qqq = 4 { }

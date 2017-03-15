@@ -52,12 +52,12 @@ func f4(range: Range<Int>) -> Int {
 }
 
 // statements will be discommented while in demo
-//func f4(range: ClosedRange<Int>) -> Int {
-//    return f3(lowerBound: range.lowerBound, upperBound: range.upperBound)
-//}
+func f4(range: ClosedRange<Int>) -> Int {
+    return f3(lowerBound: range.lowerBound, upperBound: range.upperBound)
+}
 
 let v4 = f4(range: 0..<5)
-//let v41 = f4(range: 0...5)
+let v41 = f4(range: 0...5)
 
 //////////////////////////////////////////////////////
 print("\n=== 5 ==================")
@@ -121,7 +121,7 @@ print("after: \(v7_s1), \(v7_s2)")
 print("---------------")
 
 // we have two functions to produce the same logic, let's create generic
-func f7<T>(v1: inout T, v2: inout T) {
+func f7<TQQ>(v1: inout TQQ, v2: inout TQQ) {
     let temp = v1
     v1 = v2
     v2 = temp
@@ -177,6 +177,8 @@ struct Stack<T> {
     var count: Int { return items.count }
     init() { }
 }
+
+enum RRR { case a, b, c }
 
 var s8_1 = Stack<Int>()
 print(s8_1.items)
