@@ -20,6 +20,15 @@
       location = "group:06 Closures.playground">
    </FileRef>
    <FileRef
+      location = "group:07 Classes.playground">
+   </FileRef>
+   <FileRef
+      location = "group:08 Protocols.playground">
+   </FileRef>
+   <FileRef
+      location = "group:09 Extensions.playground">
+   </FileRef>
+   <FileRef
       location = "group:Image View and Network.playground">
    </FileRef>
    <FileRef
