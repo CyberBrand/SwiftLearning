@@ -109,7 +109,8 @@ struct S6 {
 
 //    subscript (key: String) -> Int {
 //        let index = keys.index(of: key)
-//        return values[index]
+//        //assert(index != nil, "Index does not exists")
+//        return values[index!]
 //    }
 
     subscript (key: String) -> Int? {
