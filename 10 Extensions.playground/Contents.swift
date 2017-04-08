@@ -1,5 +1,5 @@
 import Foundation
-
+/*
 print("=== 1 ==================")
 
 struct S1 {
@@ -72,6 +72,8 @@ print("the number of characters in \(word) is \(word.characters.count)")
 // Prints "the number of characters in café is 4"
 /////////////////////
 
+//???? MemoryLayout<String.CharacterView>.size(ofValue: word.characters)
+
 print("\n=== 2 ==================")
 
 extension Double {
@@ -111,7 +113,7 @@ v3.power(base: 4)
 print(v3)
 
 print("\n=== 4 ==================")
-/*
+*/
 protocol Stringable {
     var asString: String { get }
 }
@@ -122,19 +124,18 @@ struct S4 {
 
 var v4 = S4(a: 123)
 print(v4.a)
-//print(v4.asString)
+print(v4.asString)
 
 extension S4: Stringable {
-    var asString: String { return String(a) }
+    var asString: String { return String(a) + "!" }
 }
 
-//print(v4.asString)
+print(v4.asString)
 
 extension Int: Stringable {
-    var asString: String { return String(self) }
+    var asString: String { return String(self) + "@" }
 }
-
-//print(56.asString)
+print(56.asString)
 
 func f4(a1: Stringable, a2: Stringable) -> String{
     return "\(a1.asString) and \(a2.asString)"
@@ -144,12 +145,19 @@ print(f4(a1: v4, a2: 123))
 
 // protocol extension
 extension Stringable {
+    var asString: String { return "??" }
     var length: Int {
         return asString.characters.count
     }
 }
 
+print(1234.asString)
 print(1234.length)
+print(v4.asString)
 print(v4.length)
-*/
-print("\n=== 5 ==================")
+
+extension Double: Stringable {
+    var asString: String { return "##" }
+}
+
+111.22.asString
